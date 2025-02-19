@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习笔记 - 登录</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <form method="post" action="{% url 'users:login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">登录</button>
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
+    </form>
+</body>
+</html>

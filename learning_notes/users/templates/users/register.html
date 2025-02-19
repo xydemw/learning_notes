@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习笔记 - 注册</title>
+</head>
+<body>
+    <h1>注册</h1>
+    <form method="post" action="{% url 'users:register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">注册</button>
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
+    </form>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

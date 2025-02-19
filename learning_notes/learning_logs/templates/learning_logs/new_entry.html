@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学习笔记 - 新条目</title>
+</head>
+<body>
+    <h1>{{ topic }}</h1>
+    <h2>添加新条目：</h2>
+    <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">添加条目</button>
+    </form>
+</body>
+</html>
