@@ -12,5 +12,7 @@
         {{ form.as_p }}
         <button name="submit">保存更改</button>
     </form>
+    <!-- 将超链接改为按钮 -->
+    <button onclick="window.location.href='{% url 'learning_logs:topic' topic.id %}'">返回主题</button>
 </body>
 </html>

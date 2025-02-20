@@ -21,7 +21,7 @@ def topic(request, topic_id):
     # 确认请求的主题属于当前用户
     if topic.owner != request.user:
         raise Http404
-    entries = topic.entry_set.order_by('-date_added')
+    entries = topic.entry_set.order_by('date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
 
@@ -85,3 +85,27 @@ def edit_entry(request, entry_id):
 
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
+
+
+@login_required
+def delete_topic(request, topic_id):
+    """删除主题"""
+    topic = Topic.objects.get(id=topic_id)
+    # 确认请求的主题属于当前用户
+    if topic.owner != request.user:
+        raise Http404
+    topic.delete()
+    return redirect('learning_logs:topics')
+
+
+
+@login_required
+def delete_entry(request, entry_id):
+    """删除条目"""
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+    # 确认请求的条目所属主题属于当前用户
+    if topic.owner != request.user:
+        raise Http404
+    entry.delete()
+    return redirect('learning_logs:topic', topic_id=topic.id)

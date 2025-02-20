@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}  <!-- 加载 static 标签库 -->
     <!-- 设置页面标题为“学习笔记 - 主页” -->
     <title>学习笔记 - 主页</title>
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="{% static 'learning_logs/css/styles.css' %}">
 </head>
 <body>
-    <!-- 主标题，显示“学习笔记” -->
-    <h1>学习笔记</h1>
-    <!-- 段落描述，解释学习笔记的作用 -->
-    <p>学习笔记帮助你记录你感兴趣的主题，并在学习过程中添加日志条目。</p>
-    <!-- 链接到登录页面，使用Django的url模板标签生成URL -->
-    <a href="{% url 'users:login' %}">登录</a>
-    <!-- 链接到注册页面，使用Django的url模板标签生成URL -->
-    <a href="{% url 'users:register' %}">注册</a>
+    <header>
+        <!-- 主标题，显示“学习笔记” -->
+        <h1>学习笔记</h1>
+    </header>
+    <main>
+        <!-- 段落描述，解释学习笔记的作用 -->
+        <p>学习笔记帮助你记录你感兴趣的主题，并在学习过程中添加日志条目。</p>
+        <div class="button-container">
+            <!-- 将超链接改为按钮 -->
+            <button onclick="window.location.href='{% url 'users:login' %}'">登录</button>
+            <!-- 将超链接改为按钮 -->
+            <button onclick="window.location.href='{% url 'users:register' %}'">注册</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 学习笔记</p>
+    </footer>
 </body>
 </html>

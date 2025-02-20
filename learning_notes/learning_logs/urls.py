@@ -15,4 +15,9 @@ urlpatterns = [
     path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),
     # 用于编辑既有条目的页面
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
+    # 用于删除主题的页面
+    path('delete_topic/<int:topic_id>/', views.delete_topic, name='delete_topic'),
+    # 用于删除条目的页面
+    path('delete_entry/<int:entry_id>/', views.delete_entry, name='delete_entry'),
+
 ]
